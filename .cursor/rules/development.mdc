@@ -1,0 +1,43 @@
+---
+alwaysApply: true
+---
+# 技術スタック
+- 言語はTypescriptで統一する
+- ライブラリのバージョンはlatestを使用する
+- モノレポを採用し、以下のフォルダ構成とする
+  - backend: サーバーサイドで使用するソースコードを保存する
+  - frontend: クライアントエンドで使用するソースコードを保存する
+  - infra: IaCで使用するソースコードを保存する
+- クラウドネイティブでAWSでサービスを立ち上げる
+- tRPCを採用してスキーマをbackendとfrontendで共有する
+- パッケージ管理はnpmを採用する
+- Formater/LinterはBiome.jsを採用する
+- 命名規則は[Google Typescript Style Guide](https://google.github.io/styleguide/tsguide.html)を採用する
+- 可用性よりも金銭的なコスト削減を優先とする
+- 認証およびユーザーディレクトリはAmazon Cognito user poolsを採用する
+- CI/CDはGithub Actionsを採用して./github/workflowsにて実装する
+
+# backend
+## アーキテクチャ
+- フォルダ構成はトランザクションスクリプトとする
+  - 以下の条件に当てはまるとドメインオブジェクトを導入しなさい
+    - コード量が増えて全体を把握しづらくなり、ルールに名前を付けて抽象化したくなるとき
+    - 同じドメインルールを繰り返し実装しているとき
+    - 仕様変更の際に影響範囲を追いづらくなってきているとき
+## ライブラリ
+- フレームワークはExpressを採用する
+- リレーショナルデータベースが採用された場合、ORMはPrismaを採用する
+# frontend
+## アーキテクチャ
+- [bulletproof-react](https://github.com/alan2207/bulletproof-react/tree/master/apps/react-vite)を採用
+## ライブラリ
+- フレームワークはReactを採用する
+- ビルドツールはViteを採用する
+
+# テスト戦略
+## Unit Test
+カバレッジ基準は分岐網羅(Branch Coverage)(C1)を採用する
+### backend
+カバレッジが85%以上とする
+### frontend
+カバレッジが75％以上とする
