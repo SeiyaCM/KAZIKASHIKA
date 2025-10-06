@@ -196,3 +196,133 @@ An app for visualizing time spent on domestic chores, child-rearing, and elder c
       - **獲得ポイント:**
           - **もしAさんが実行した場合:** `10分 × ストレス度:5 = 50ポイント`
           - **もしBさんが実行した場合:** `10分 × ストレス度:2 = 20ポイント`
+
+---
+
+## 開発者向けドキュメント
+
+### 技術スタック
+
+#### フロントエンド
+- **フレームワーク**: React 18.x + Vite 6.x
+- **言語**: TypeScript 5.x
+- **UIライブラリ**: Tailwind CSS + shadcn/ui
+- **状態管理**: Zustand + TanStack Query
+- **API通信**: tRPC
+
+#### バックエンド
+- **フレームワーク**: Express 4.x
+- **言語**: TypeScript 5.x
+- **API**: tRPC 10.x
+- **ORM**: Prisma 5.x
+- **データベース**: PostgreSQL 15.x (Amazon RDS)
+- **認証**: AWS Cognito + aws-jwt-verify
+
+#### インフラ
+- **クラウド**: AWS
+- **IaC**: AWS CDK
+- **ホスティング**: Lambda + API Gateway (Backend) / S3 + CloudFront (Frontend)
+
+#### 開発ツール
+- **パッケージマネージャー**: npm
+- **Linter/Formatter**: Biome
+- **テスト**: Vitest
+- **CI/CD**: GitHub Actions
+
+### プロジェクト構成
+
+```
+KAZIKASHIKA/
+├── backend/          # バックエンドAPIサーバー
+├── frontend/         # フロントエンドWebアプリケーション
+├── infra/            # AWSインフラ (CDK)
+├── docs/             # 設計ドキュメント
+├── package.json      # ルートpackage.json (workspaces)
+├── tsconfig.json     # 共通TypeScript設定
+└── biome.json        # Biome設定
+```
+
+### セットアップ手順
+
+#### 前提条件
+- Node.js 20.x 以上
+- npm 10.x 以上
+- PostgreSQL 15.x (ローカル開発用)
+
+#### 依存関係のインストール
+
+```bash
+# ルートディレクトリで実行
+npm install
+
+# または各ワークスペースで個別にインストール
+cd backend && npm install
+cd frontend && npm install
+cd infra && npm install
+```
+
+#### バックエンド開発環境のセットアップ
+
+```bash
+cd backend
+
+# 環境変数の設定
+cp .env.example .env
+# .envファイルを編集して、DATABASE_URLなどを設定
+
+# Prismaクライアントの生成
+npm run prisma:generate
+
+# データベースマイグレーション
+npm run prisma:migrate
+
+# 開発サーバーの起動
+npm run dev
+```
+
+#### フロントエンド開発環境のセットアップ
+
+```bash
+cd frontend
+
+# 環境変数の設定
+cp .env.example .env
+# .envファイルを編集して、VITE_API_URLなどを設定
+
+# 開発サーバーの起動
+npm run dev
+```
+
+### 開発コマンド
+
+```bash
+# Lintの実行
+npm run lint
+
+# フォーマット
+npm run format
+
+# テストの実行
+npm run test
+
+# カバレッジ付きテスト
+npm run test:coverage
+```
+
+### 関連ドキュメント
+
+- [システムアーキテクチャ](./docs/architecture.md)
+- [データベース設計](./docs/database-design.md)
+- [インフラ構成図](./docs/infrastructure.drawio.svg)
+- [実装計画](./.cursor_workflow/specs/implementations.md)
+- [設計書](./.cursor_workflow/specs/design.md)
+
+### コーディング規約
+
+- [Google TypeScript Style Guide](https://google.github.io/styleguide/tsguide.html) に準拠
+- Biomeでの自動フォーマット・Lintを必須とする
+- コミット前に `npm run lint` と `npm run format` を実行すること
+
+### ライセンス
+
+MIT

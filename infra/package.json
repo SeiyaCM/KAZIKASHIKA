@@ -1,0 +1,35 @@
+{
+  "name": "@kazikashika/infra",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Infrastructure as Code for KAZIKASHIKA using AWS CDK",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "cdk": "cdk",
+    "lint": "biome lint .",
+    "format": "biome format --write .",
+    "deploy": "cdk deploy --all",
+    "deploy:backend": "cdk deploy BackendStack",
+    "deploy:frontend": "cdk deploy FrontendStack",
+    "destroy": "cdk destroy --all",
+    "synth": "cdk synth",
+    "diff": "cdk diff"
+  },
+  "dependencies": {
+    "aws-cdk-lib": "latest",
+    "constructs": "latest",
+    "source-map-support": "latest"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "latest",
+    "@types/node": "^20.0.0",
+    "aws-cdk": "latest",
+    "tsx": "latest",
+    "typescript": "latest"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=10.0.0"
+  }
+}
