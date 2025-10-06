@@ -1,0 +1,29 @@
+{
+  "name": "kazikashika",
+  "version": "1.0.0",
+  "private": true,
+  "description": "家事を家族でかわいく可視化するアプリケーション",
+  "workspaces": [
+    "backend",
+    "frontend",
+    "infra"
+  ],
+  "scripts": {
+    "lint": "npm run lint --workspaces",
+    "format": "npm run format --workspaces",
+    "test": "npm run test --workspaces"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=10.0.0"
+  },
+  "keywords": [
+    "household",
+    "chore",
+    "tracking",
+    "family"
+  ],
+  "author": "",
+  "license": "MIT"
+}
+
