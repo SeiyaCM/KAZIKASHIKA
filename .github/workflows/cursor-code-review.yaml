@@ -26,7 +26,8 @@ jobs:
           CURSOR_API_KEY: ${{ secrets.CURSOR_API_KEY }}
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
-          cursor-agent --force --model "$MODEL" --output-format=text --print "GitHub Actionsランナーで自動コードレビューを実行中です。gh CLIが利用可能で、GH_TOKENで認証済みです。プルリクエストにコメント可能です。"
+          cursor-agent --force --model "$MODEL" --output-format=text --print "GitHub Actionsランナーで自動コードレビューを実行中です。gh CLIが利用可能で、GH_TOKENで認証済みです。プルリクエストにコメント可能です。
+
           Context:
           - Repo: ${{ github.repository }}
           - PR Number: ${{ github.event.pull_request.number }}
