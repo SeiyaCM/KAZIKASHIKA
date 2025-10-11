@@ -26,6 +26,8 @@ model User {
   choreLogs     ChoreLog[]
 
   @@index([teamId])
+  @@index([cognitoSub])
+  @@map("users")
 }
 
 // チーム情報
@@ -38,6 +40,9 @@ model Team {
 
   users  User[]
   chores Chore[]
+
+  @@index([inviteCode])
+  @@map("teams")
 }
 
 // 家事マスタ
@@ -54,6 +59,7 @@ model Chore {
   choreLogs     ChoreLog[]
 
   @@index([teamId])
+  @@map("chores")
 }
 
 // ユーザー別家事ストレス度
@@ -71,6 +77,7 @@ model UserChoreStress {
   @@unique([userId, choreId])
   @@index([userId])
   @@index([choreId])
+  @@map("user_chore_stresses")
 }
 
 // 家事実行記録
@@ -89,4 +96,5 @@ model ChoreLog {
   @@index([userId])
   @@index([choreId])
   @@index([completedAt])
+  @@map("chore_logs")
 }
