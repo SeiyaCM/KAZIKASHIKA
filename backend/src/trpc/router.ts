@@ -1,5 +1,7 @@
 import { z } from "zod";
 import { publicProcedure, router } from "./trpc";
+import { authRouter } from "./routers/auth";
+import { teamRouter } from "./routers/team";
 
 /**
  * ルートルーター
@@ -22,6 +24,16 @@ export const appRouter = router({
 				timestamp: new Date().toISOString(),
 			};
 		}),
+
+	/**
+	 * 認証関連のAPI
+	 */
+	auth: authRouter,
+
+	/**
+	 * チーム管理関連のAPI
+	 */
+	team: teamRouter,
 });
 
 /**
