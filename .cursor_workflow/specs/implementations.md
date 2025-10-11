@@ -19,7 +19,9 @@
 3. issue用のブランチを切る
 4. issue用のブランチに切り替える
 5. 実装を開始する前に実装方針を考えて該当issueにコメントを実施する
-   - `gh issue comment <issue番号>` を使用する
+   - **PowerShellの場合**: `.\.github\scripts\gh-issue-comment.ps1 -IssueNumber <issue番号> -Body "コメント本文"`
+   - **Git Bash/WSL/Windows Terminalの場合**: `gh issue comment <issue番号> --body "コメント本文"`
+   - 注意: PowerShellで直接`gh issue comment`を使用すると日本語が文字化けするため、必ずヘルパースクリプトを使用すること
 6. ユーザから実装方針OKをもらえたら実装を開始する
    - ファイル単位で作成・更新・削除をした場合にgit commitすること
 7. 実装終了後にPRを出す

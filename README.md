@@ -316,6 +316,7 @@ npm run test:coverage
 - [インフラ構成図](./docs/infrastructure.drawio.svg)
 - [実装計画](./.cursor_workflow/specs/implementations.md)
 - [設計書](./.cursor_workflow/specs/design.md)
+- [PowerShell環境設定ガイド](./docs/powershell-setup.md) - Windows環境での日本語文字化け対策
 
 ### コーディング規約
 
