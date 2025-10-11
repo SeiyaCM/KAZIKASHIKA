@@ -26,7 +26,10 @@ jobs:
           CURSOR_API_KEY: ${{ secrets.CURSOR_API_KEY }}
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
-          cursor-agent --force --model "$MODEL" --output-format=text --print "GitHub Actionsランナーで自動コードレビューを実行中です。gh CLIが利用可能で、GH_TOKENで認証済みです。プルリクエストにコメント可能です。"
+          cursor-agent --force --model "$MODEL" --output-format=text --print "GitHub Actionsランナーで自動コードレビューを実行中です。gh CLIが利用可能で、GH_TOKENで認証済みです。プルリクエストにコメント可能です。
+
+          **重要: すべてのレビューコメントは日本語で記述してください。**
+
           Context:
           - Repo: ${{ github.repository }}
           - PR Number: ${{ github.event.pull_request.number }}
@@ -48,7 +51,8 @@ jobs:
           - Max 10 inline comments total; prioritize the most critical issues
           - One issue per comment; place on the exact changed line
           - Natural tone, specific and actionable; do not mention automated or high-confidence
-          - Use emojis: 🚨 Critical 🔒 Security ⚡ Performance ⚠️ Logic ✅ Resolved ✨ Improvement
+          - Use emojis: 🚨 Critical(重大) 🔒 Security(セキュリティ) ⚡ Performance(パフォーマンス) ⚠️ Logic(ロジック) ✅ Resolved(解決済み) ✨ Improvement(改善提案)
+          - **すべてのコメントは日本語で記述してください** (Write all comments in Japanese)
           
           Submission:
           - Submit one review containing inline comments plus a concise summary
